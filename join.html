@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join the network — The Platform Collective</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --ink: #3e3e3e;
+      --muted: #636363;
+      --blue: #007aff;
+      --blue-dark: #0068d9;
+      --ring: #f0f0ef;
+      --hairline: #f0f0f0;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+    }
+    html, body { margin: 0; padding: 0; background: var(--bg); }
+    body {
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      font-family: var(--sans); letter-spacing: -0.02em; color: var(--ink);
+      background: var(--bg); min-height: 100vh;
+    }
+    * { box-sizing: border-box; }
+    ::selection { background: #007aff; color: #ffffff; }
+    a { transition: opacity 200ms, background 200ms, border-color 200ms, transform 200ms; }
+
+    /* ---------- Gradient header ---------- */
+    .top {
+      position: relative;
+      background: linear-gradient(180deg, #4a7ff2 0%, #7b7ed8 42%, #c98ab5 100%);
+      overflow: hidden;
+      padding: 20px 20px clamp(70px, 9vw, 110px);
+    }
+    .top-hill { position: absolute; border-radius: 50%; }
+    .top-hill--1 { left: -10%; right: 55%; bottom: -90px;  height: 170px; background: #2b2440; opacity: 0.5; }
+    .top-hill--2 { left: 40%;  right: -15%; bottom: -110px; height: 190px; background: #2b2440; opacity: 0.65; }
+    .top-hill--3 { left: -5%;  right: -5%;  bottom: -140px; height: 190px; background: #241e38; }
+
+    .nav {
+      position: relative; max-width: 860px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      background: #ffffff; border-radius: 22px; box-shadow: 0 0 0 5px rgba(247,247,247,0.35); padding: 8px 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .brand-dot { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #4a7ff2, #7b7ed8); }
+    .brand-name { font-weight: 600; font-size: 16px; color: #000000; }
+    .nav-cta { color: #000000; text-decoration: none; font-weight: 500; font-size: 14px; padding: 4px 8px; }
+    .nav-cta:hover { opacity: 0.6; }
+
+    .head {
+      position: relative; max-width: 720px; margin: 0 auto; text-align: center;
+      padding-top: clamp(48px, 7vw, 90px);
+    }
+    .pill {
+      display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35);
+      color: #ffffff; border-radius: 50px; padding: 6px 16px; font-size: 12px; font-weight: 500; margin-bottom: 24px;
+    }
+    .title {
+      font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.0; color: #ffffff; margin: 0 0 20px;
+    }
+    .sub { font-size: clamp(15px, 1.4vw, 17px); line-height: 1.5; color: rgba(255,255,255,0.92); max-width: 52ch; margin: 0 auto; }
+
+    /* ---------- Form card ---------- */
+    .card-wrap { padding: 0 20px; margin-top: clamp(-56px, -6vw, -72px); position: relative; z-index: 2; }
+    .card {
+      max-width: 560px; margin: 0 auto; background: #ffffff; border-radius: 26px;
+      box-shadow: 0 0 0 5px var(--ring); padding: clamp(28px, 4vw, 44px);
+    }
+    .card-lede { font-size: 15px; line-height: 1.45; color: var(--muted); margin: 0 0 28px; }
+
+    .field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+    .label { font-size: 13px; font-weight: 500; color: #000000; letter-spacing: -0.1px; }
+    .label .opt { color: var(--muted); font-weight: 400; }
+    .input, .textarea {
+      font-family: var(--sans); font-size: 15px; color: var(--ink); letter-spacing: -0.02em;
+      background: #ffffff; border: none; box-shadow: 0 0 0 1px #e2e2e2;
+      border-radius: 12px; padding: 12px 14px; width: 100%; outline: none;
+      transition: box-shadow 160ms;
+    }
+    .input::placeholder, .textarea::placeholder { color: #b3b3b3; }
+    .input:focus, .textarea:focus { box-shadow: 0 0 0 2px var(--blue); }
+    .textarea { resize: vertical; min-height: 96px; line-height: 1.45; }
+
+    .submit {
+      width: 100%; margin-top: 8px; cursor: pointer; font-family: var(--sans);
+      background: var(--blue); color: #ffffff; font-weight: 600; font-size: 16px; letter-spacing: -0.02em;
+      border: none; padding: 15px 32px; border-radius: 50px;
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.3), 0 3px 2px 0 rgba(0,0,0,0.06);
+      transition: background 200ms;
+    }
+    .submit:hover { background: var(--blue-dark); }
+    .submit:disabled { opacity: 0.6; cursor: default; }
+
+    .fineprint { font-size: 12px; color: var(--muted); text-align: center; margin: 18px 0 0; line-height: 1.5; }
+    .error { color: #c0392b; font-size: 13px; margin: 14px 0 0; text-align: center; display: none; }
+
+    /* success state */
+    .success { display: none; text-align: center; }
+    .success .check {
+      width: 52px; height: 52px; border-radius: 50%; margin: 4px auto 20px;
+      background: #eaf3ff; color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 24px;
+    }
+    .success h2 { font-family: var(--serif); font-weight: 400; font-size: 28px; color: #000000; margin: 0 0 12px; line-height: 1.1; }
+    .success p { font-size: 15px; line-height: 1.5; color: var(--muted); margin: 0 0 24px; }
+    .success a { color: var(--blue); text-decoration: none; font-weight: 500; font-size: 15px; }
+    .success a:hover { opacity: 0.7; }
+
+    /* ---------- Footer ---------- */
+    .footer { padding: clamp(56px, 8vw, 90px) 24px 40px; }
+    .footer-bar {
+      max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 22px;
+      box-shadow: 0 0 0 1px var(--hairline); padding: 20px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .footer-dot { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, #4a7ff2, #7b7ed8); }
+    .footer-name { font-weight: 600; font-size: 14px; color: #000000; }
+    .footer-links { display: flex; gap: 24px; font-size: 12px; align-items: center; }
+    .footer-link { color: var(--muted); text-decoration: none; font-weight: 500; }
+    .footer-link:hover { color: #000000; }
+    .footer-copy { color: #c9c9c9; }
+  </style>
+</head>
+<body>
+
+  <!-- Gradient header -->
+  <header class="top">
+    <div class="top-hill top-hill--1"></div>
+    <div class="top-hill top-hill--2"></div>
+    <div class="top-hill top-hill--3"></div>
+
+    <nav class="nav">
+      <a href="index.html" class="brand">
+        <div class="brand-dot"></div>
+        <span class="brand-name">The Platform Collective</span>
+      </a>
+      <a href="index.html" class="nav-cta">← Back to home</a>
+    </nav>
+
+    <div class="head">
+      <div class="pill">For operators</div>
+      <h1 class="title">Join the network.</h1>
+      <p class="sub">The network grows by referral and hand-vetting. Tell us who you are and we'll take it from there. Every application is read by someone already in the network.</p>
+    </div>
+  </header>
+
+  <!-- Form card -->
+  <div class="card-wrap">
+    <div class="card">
+
+      <form id="join-form" method="POST" target="join_sink" novalidate>
+        <p class="card-lede">Four quick things. If it's a fit, we'll be in touch to talk through your background.</p>
+
+        <div class="field">
+          <label class="label" for="name">Name</label>
+          <input class="input" id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required>
+        </div>
+
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+        </div>
+
+        <div class="field">
+          <label class="label" for="linkedin">LinkedIn or portfolio</label>
+          <input class="input" id="linkedin" name="linkedin" type="url" inputmode="url" placeholder="https://linkedin.com/in/…" required>
+        </div>
+
+        <div class="field">
+          <label class="label" for="note">A short note <span class="opt">(optional)</span></label>
+          <textarea class="textarea" id="note" name="note" placeholder="What you'd bring to the network. A line or two is plenty."></textarea>
+        </div>
+
+        <button class="submit" id="submit-btn" type="submit">Apply to the network</button>
+        <p class="error" id="error-msg">Something went wrong sending that. Please try again, or email us directly.</p>
+        <p class="fineprint">No juniors, no keyword-match résumés. We read every application.</p>
+      </form>
+
+      <div class="success" id="success">
+        <div class="check">✓</div>
+        <h2>Application received.</h2>
+        <p>Thanks. Someone in the network will review it and reach out if it's a fit. We keep the bar high, so we're selective about who we bring in.</p>
+        <a href="index.html">← Back to home</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bar">
+      <a href="index.html" class="footer-brand">
+        <div class="footer-dot"></div>
+        <span class="footer-name">The Platform Collective</span>
+      </a>
+      <div class="footer-links">
+        <a href="index.html#cta" class="footer-link">Get access</a>
+        <a href="#" class="footer-link">Contact</a>
+        <span class="footer-copy">© 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hidden target so the POST doesn't navigate the page away -->
+  <iframe name="join_sink" id="join_sink" style="display:none" title="hidden"></iframe>
+
+  <script>
+    // ── CONFIG ──────────────────────────────────────────────
+    // Paste your Google Apps Script Web App URL here (ends in /exec).
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwg-KtspBp1hCa9I1Je4oWwowfM89kwzGB_C6to2l7wrnduUvjSHuObpDksoxofj7LN/exec";
+    // ────────────────────────────────────────────────────────
+
+    const form = document.getElementById("join-form");
+    const btn = document.getElementById("submit-btn");
+    const errorMsg = document.getElementById("error-msg");
+    const successBox = document.getElementById("success");
+    const sink = document.getElementById("join_sink");
+
+    let submitting = false;
+
+    form.setAttribute("action", ENDPOINT);
+
+    form.addEventListener("submit", function (e) {
+      errorMsg.style.display = "none";
+
+      // Native validity check (required fields + email/url format)
+      if (!form.checkValidity()) {
+        e.preventDefault();
+        form.reportValidity();
+        return;
+      }
+
+      if (ENDPOINT.indexOf("REPLACE_WITH") !== -1) {
+        e.preventDefault();
+        errorMsg.textContent = "Form isn't connected yet. (Endpoint not configured.)";
+        errorMsg.style.display = "block";
+        return;
+      }
+
+      // Let the real form POST into the hidden iframe.
+      submitting = true;
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+    });
+
+    // The iframe fires 'load' once after the POST completes.
+    sink.addEventListener("load", function () {
+      if (!submitting) return; // ignore the initial blank load
+      submitting = false;
+      form.style.display = "none";
+      successBox.style.display = "block";
+      successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  </script>
+
+</body>
+</html>
