@@ -1,25 +1,34 @@
-# CODING AGENTS: READ THIS FIRST
+# The Platform Collective
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Landing site for **The Platform Collective** — a private network of senior, ex-platform operators (Meta, TikTok, Snap, Google and the agencies that scaled on them). Companies get access to the network for one-off, scoped projects. No agency, no retainer.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+**Live:** https://theplatformcollective.vercel.app
 
-## What you should do — IMPORTANT
+## Pages
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+| File | URL | Purpose |
+| --- | --- | --- |
+| `index.html` | `/` | Landing page: hero, how it works, disciplines, operators, comparison, CTA |
+| `access.html` | `/access.html` | Company "Get access" request form |
+| `join.html` | `/join.html` | Operator "Join the network" application form |
 
-**Read `project/The Platform Collective v2.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+Plain static HTML/CSS — no build step, no dependencies. Fonts (Playfair Display + Inter) load from Google Fonts.
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Forms
 
-## About the design files
+Both forms POST to a single **Google Apps Script** web app, which routes on a hidden `type` field:
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+- `type=client` (Get access) → appends to a **Clients** tab and **emails** the owner.
+- `type=operator` (Join) → appends to the operators tab.
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+Submissions use a hidden-iframe POST so the page never navigates away; the confirmation state shows once the request is sent. The Apps Script source and setup steps live in the Sheet's Apps Script editor (not in this repo).
 
-## Bundle contents
+To point the forms at a different backend, change the `ENDPOINT` constant near the bottom of `access.html` and `join.html`.
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `# Platform Collective Landing Pagehtml<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF` project files (HTML prototypes, assets, components)
+## Deploy
+
+Hosted on **Vercel**, connected to this GitHub repo. Every push to `main` auto-deploys. Framework preset: **Other**; no build command or output directory (static root).
+
+## `design/`
+
+Original design handoff bundle from [Claude Design](https://claude.ai/design) — the HTML/CSS/JS prototypes and the chat transcripts the site was built from. Kept for reference; not served.
