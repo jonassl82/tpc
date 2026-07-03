@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Platform Collective — Senior platform operators, on demand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f7f7;
+      --ink: #3e3e3e;
+      --black: #000000;
+      --muted: #636363;
+      --blue: #007aff;
+      --blue-dark: #0068d9;
+      --ring: #f0f0ef;
+      --hairline: #f0f0f0;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+    }
+
+    html, body { margin: 0; padding: 0; background: var(--bg); }
+    body {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-family: var(--sans);
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      background: var(--bg);
+      min-height: 100vh;
+    }
+    * { box-sizing: border-box; }
+    ::selection { background: #007aff; color: #ffffff; }
+
+    a { transition: opacity 200ms, background 200ms, border-color 200ms, transform 200ms; }
+
+    /* ---------- Layout helpers ---------- */
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: clamp(80px, 10vw, 120px) 24px 0; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      background: linear-gradient(180deg, #4a7ff2 0%, #7b7ed8 30%, #c98ab5 65%, #e8a87c 100%);
+      overflow: hidden;
+      padding: 20px 20px clamp(90px, 12vw, 160px);
+    }
+    .hero-hill { position: absolute; border-radius: 50%; }
+    .hero-hill--1 { left: -10%; right: 55%; bottom: -90px;  height: 180px; background: #2b2440; opacity: 0.55; }
+    .hero-hill--2 { left: 40%;  right: -15%; bottom: -110px; height: 200px; background: #2b2440; opacity: 0.7; }
+    .hero-hill--3 { left: -5%;  right: -5%;  bottom: -140px; height: 200px; background: #241e38; }
+
+    .nav {
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow: 0 0 0 5px rgba(247,247,247,0.35);
+      padding: 8px 16px;
+    }
+    .brand { display: flex; align-items: center; gap: 8px; }
+    .brand-dot { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #4a7ff2, #7b7ed8); }
+    .brand-name { font-weight: 600; font-size: 16px; color: #000000; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-link { color: #000000; text-decoration: none; font-weight: 500; font-size: 14px; padding: 4px 8px; }
+    .nav-link:hover { opacity: 0.6; }
+    .nav-cta { color: #ffffff; background: var(--blue); text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px 20px; border-radius: 50px; margin-left: 8px; }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    .hero-copy { position: relative; max-width: 820px; margin: 0 auto; text-align: center; padding-top: clamp(70px, 9vw, 130px); }
+    .pill-hero {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #ffffff;
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0;
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(40px, 5.6vw, 76px);
+      line-height: 1.0;
+      letter-spacing: 0;
+      color: #ffffff;
+      margin: 0 0 26px;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.5;
+      color: rgba(255,255,255,0.92);
+      max-width: 56ch;
+      margin: 0 auto 40px;
+    }
+    .hero-actions { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-white {
+      display: inline-block; background: #ffffff; color: #000000; text-decoration: none;
+      font-weight: 600; font-size: 16px; padding: 14px 28px; border-radius: 50px;
+      box-shadow: inset 0 1px 0 0 #ffffff, 0 0 0 1px rgba(0,0,0,0.15), 0 3px 2px 0 rgba(0,0,0,0.06);
+    }
+    .btn-white:hover { transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block; background: transparent; color: #ffffff; text-decoration: none;
+      font-weight: 500; font-size: 15px; padding: 12px 24px; border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.7);
+    }
+    .btn-ghost:hover { border-color: #ffffff; }
+
+    /* ---------- Section headings ---------- */
+    .head-center { text-align: center; }
+    .eyebrow {
+      font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--muted);
+      background: #ffffff; border-radius: 50px; padding: 6px 16px; display: inline-block;
+      box-shadow: 0 0 0 1px var(--hairline); margin-bottom: 20px;
+    }
+    .eyebrow--soft { background: #f7f7f7; box-shadow: none; }
+    .h2 {
+      font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 3.4vw, 44px);
+      line-height: 1.0; letter-spacing: 0; color: #000000; margin: 0;
+    }
+    .sub-lede { font-size: 15px; line-height: 1.4; color: var(--muted); max-width: 58ch; margin: 0 auto; }
+
+    /* ---------- Cards ---------- */
+    .card {
+      background: #ffffff; border-radius: 26px; box-shadow: 0 0 0 5px var(--ring);
+      padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;
+    }
+    .step-num {
+      width: 34px; height: 34px; border-radius: 50%; background: #f7f7f7;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: var(--blue);
+    }
+    .card-title { font-size: 18px; font-weight: 600; letter-spacing: -0.36px; color: #000000; margin: 0; line-height: 1.35; }
+    .card-desc { font-size: 15px; line-height: 1.4; color: var(--muted); margin: 0; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+
+    .card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .badge {
+      font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--blue);
+      background: #eaf3ff; border-radius: 50px; padding: 4px 10px; white-space: nowrap;
+    }
+
+    /* ---------- Operators ---------- */
+    .operators-panel {
+      max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 30px;
+      box-shadow: 0 0 0 5px var(--ring); padding: clamp(40px, 5vw, 72px);
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: clamp(36px, 5vw, 80px); align-items: start;
+    }
+    .op-h2 { margin: 0 0 22px; }
+    .op-p { font-size: 16px; line-height: 1.35; letter-spacing: -0.32px; color: var(--ink); margin: 0 0 16px; }
+    .op-p--last { margin: 0 0 28px; }
+    .op-link { color: var(--blue); text-decoration: none; font-weight: 500; font-size: 15px; }
+    .op-link:hover { opacity: 0.7; }
+    .op-list { display: flex; flex-direction: column; gap: 10px; }
+    .op-row {
+      background: #ffffff; border-radius: 16px; box-shadow: 0 0 0 1px var(--hairline);
+      padding: 18px 22px; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .op-role { font-weight: 600; font-size: 15px; letter-spacing: -0.3px; color: #000000; }
+    .op-bg { font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--muted); background: #f7f7f7; border-radius: 50px; padding: 4px 12px; white-space: nowrap; }
+    .op-note { font-size: 12px; color: var(--muted); padding-top: 8px; text-align: center; }
+
+    /* ---------- Comparison ---------- */
+    .cmp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; align-items: stretch; }
+    .cmp-card {
+      background: #ffffff; border-radius: 26px; box-shadow: 0 0 0 1px var(--hairline);
+      padding: 32px 28px; display: flex; flex-direction: column; gap: 18px;
+    }
+    .cmp-card--highlight { box-shadow: 0 0 0 1.5px #000000, 0 0 0 6.5px var(--ring); }
+    .cmp-title { font-size: 18px; font-weight: 600; letter-spacing: -0.36px; color: #000000; }
+    .cmp-title-row { display: flex; align-items: center; gap: 10px; }
+    .cmp-dot { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, #4a7ff2, #7b7ed8); }
+    .cmp-list { display: flex; flex-direction: column; gap: 12px; font-size: 15px; line-height: 1.4; }
+    .cmp-list--muted { color: var(--muted); }
+    .cmp-list--ink { color: var(--ink); }
+    .cmp-item { display: flex; gap: 10px; }
+    .cmp-mark { color: #c9c9c9; }
+    .cmp-mark--blue { color: var(--blue); }
+
+    /* ---------- Final CTA ---------- */
+    .cta-wrap { max-width: 720px; margin: 0 auto; text-align: center; }
+    .cta-h2 {
+      font-family: var(--serif); font-weight: 400; font-size: clamp(36px, 4.4vw, 56px);
+      line-height: 1.0; letter-spacing: 0; color: #000000; margin: 0 0 20px;
+    }
+    .cta-p { font-size: 16px; line-height: 1.35; letter-spacing: -0.32px; color: var(--muted); max-width: 44ch; margin: 0 auto 36px; }
+    .btn-blue {
+      display: inline-block; background: var(--blue); color: #ffffff; text-decoration: none;
+      font-weight: 600; font-size: 16px; padding: 15px 32px; border-radius: 50px;
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.3), 0 3px 2px 0 rgba(0,0,0,0.06);
+    }
+    .btn-blue:hover { background: var(--blue-dark); }
+
+    /* ---------- Footer ---------- */
+    .footer { padding: 0 24px 40px; }
+    .footer-bar {
+      max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 22px;
+      box-shadow: 0 0 0 1px var(--hairline); padding: 20px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 8px; }
+    .footer-dot { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, #4a7ff2, #7b7ed8); }
+    .footer-name { font-weight: 600; font-size: 14px; color: #000000; }
+    .footer-links { display: flex; gap: 24px; font-size: 12px; align-items: center; }
+    .footer-link { color: var(--muted); text-decoration: none; font-weight: 500; }
+    .footer-link:hover { color: #000000; }
+    .footer-copy { color: #c9c9c9; }
+
+    /* Hide the desktop nav links on small screens; keep the primary CTA reachable via hero */
+    @media (max-width: 640px) {
+      .nav-links .nav-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================= HERO ======================= -->
+  <header class="hero">
+    <div class="hero-hill hero-hill--1"></div>
+    <div class="hero-hill hero-hill--2"></div>
+    <div class="hero-hill hero-hill--3"></div>
+
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        <span class="brand-name">The Platform Collective</span>
+      </div>
+      <div class="nav-links">
+        <a href="#how" class="nav-link">How it works</a>
+        <a href="#projects" class="nav-link">Disciplines</a>
+        <a href="#operators" class="nav-link">Operators</a>
+        <a href="#cta" class="nav-cta">Get access</a>
+      </div>
+    </nav>
+
+    <div class="hero-copy">
+      <div class="pill-hero">A private network of senior platform operators</div>
+      <h1 class="hero-title">The best platform operators in the world. In one network. Open to your project.</h1>
+      <p class="hero-sub">Get direct access to senior operators who built paid media, measurement and platform engineering at Meta, Snap and TikTok. Tell us what you need, we match you with the right person in the network, and they do the work. Not an agency. Not a retainer.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-white">Get access</a>
+        <a href="#operators" class="btn-ghost">Join the network</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================= HOW IT WORKS ======================= -->
+  <section id="how" class="section" style="padding-top: clamp(80px, 9vw, 120px);">
+    <div class="wrap">
+      <div class="head-center" style="margin-bottom: 48px;">
+        <div class="eyebrow">How it works</div>
+        <h2 class="h2">Three steps. Straight into the network.</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="step-num">1</div>
+          <h3 class="card-title">You tell us the outcome</h3>
+          <p class="card-desc">The result you need, in plain language. You don't need to know how to scope it.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">2</div>
+          <h3 class="card-title">We match you with the right operator</h3>
+          <p class="card-desc">We scope it and match you with the right person in the network. Deliverables, timeline and price, agreed before anything starts.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">3</div>
+          <h3 class="card-title">They deliver directly</h3>
+          <p class="card-desc">You work with the operator, not an account manager. Senior, hand-vetted, vouched for by the network.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= DISCIPLINES ======================= -->
+  <section id="projects" class="section">
+    <div class="wrap">
+      <div class="head-center" style="margin-bottom: 16px;">
+        <div class="eyebrow">Inside the network</div>
+        <h2 class="h2" style="margin-bottom: 16px;">Five disciplines, one standard.</h2>
+        <p class="sub-lede" style="margin-bottom: 48px;">The expertise the network covers today, expanding into adjacent platform work like messaging, commerce and CRM.</p>
+      </div>
+      <div class="grid-cards" id="disciplines"></div>
+    </div>
+  </section>
+
+  <!-- ======================= OPERATORS ======================= -->
+  <section id="operators" class="section">
+    <div class="operators-panel">
+      <div>
+        <div class="eyebrow eyebrow--soft">Who the operators are</div>
+        <h2 class="h2 op-h2">The people you couldn't reach alone.</h2>
+        <p class="op-p">Every operator in the network is senior, hand-vetted, and vouched for by someone already in it. Performance leads, measurement scientists, solutions engineers and creative leads who spent years building this at scale, inside the platforms and the agencies you'd otherwise hire.</p>
+        <p class="op-p op-p--last">No juniors. No résumé keyword matches. If they're here, someone we trust put their name on it.</p>
+        <a href="#cta" class="op-link">Think you belong here? Join the network →</a>
+      </div>
+      <div class="op-list" id="operators-list">
+        <div class="op-note">Profiles shared once your project is scoped.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= COMPARISON ======================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head-center" style="margin-bottom: 48px;">
+        <h2 class="h2">Why not an agency. Why not a freelancer.</h2>
+      </div>
+      <div class="cmp-grid">
+
+        <div class="cmp-card">
+          <div class="cmp-title">An agency</div>
+          <div class="cmp-list cmp-list--muted">
+            <div class="cmp-item"><span class="cmp-mark">·</span><span>Retainers that outlive the work</span></div>
+            <div class="cmp-item"><span class="cmp-mark">·</span><span>Senior faces in the pitch, juniors on the account</span></div>
+            <div class="cmp-item"><span class="cmp-mark">·</span><span>Overhead you pay for whether or not you use it</span></div>
+          </div>
+        </div>
+
+        <div class="cmp-card cmp-card--highlight">
+          <div class="cmp-title-row">
+            <div class="cmp-dot"></div>
+            <div class="cmp-title">The Collective</div>
+          </div>
+          <div class="cmp-list cmp-list--ink">
+            <div class="cmp-item"><span class="cmp-mark--blue">·</span><span>A network of the best, matched to your project</span></div>
+            <div class="cmp-item"><span class="cmp-mark--blue">·</span><span>You work directly with the operator, not a firm</span></div>
+            <div class="cmp-item"><span class="cmp-mark--blue">·</span><span>Scoped before it starts: deliverables, timeline, price</span></div>
+            <div class="cmp-item"><span class="cmp-mark--blue">·</span><span>Ends when the work ends. No retainer</span></div>
+          </div>
+        </div>
+
+        <div class="cmp-card">
+          <div class="cmp-title">A freelancer</div>
+          <div class="cmp-list cmp-list--muted">
+            <div class="cmp-item"><span class="cmp-mark">·</span><span>Unvetted. You find out mid-project</span></div>
+            <div class="cmp-item"><span class="cmp-mark">·</span><span>Scope you have to define and police yourself</span></div>
+            <div class="cmp-item"><span class="cmp-mark">·</span><span>Accountable to no one but their calendar</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FINAL CTA ======================= -->
+  <section id="cta" class="section" style="padding: clamp(90px, 12vw, 150px) 24px;">
+    <div class="cta-wrap">
+      <h2 class="cta-h2">Tell us what you need.</h2>
+      <p class="cta-p">A short conversation about the outcome. A match from the network within days.</p>
+      <a href="#" class="btn-blue">Get access</a>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <div class="footer-bar">
+      <div class="footer-brand">
+        <div class="footer-dot"></div>
+        <span class="footer-name">The Platform Collective</span>
+      </div>
+      <div class="footer-links">
+        <a href="#operators" class="footer-link">Join the network</a>
+        <a href="#" class="footer-link">Contact</a>
+        <span class="footer-copy">© 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Data lifted verbatim from the design's renderVals() block.
+    const projectTypes = [
+      { title: "Paid media & growth", badge: "Deepest bench", desc: "Campaign planning, channel and market expansion, scaling. Built by people who know how the auction actually behaves." },
+      { title: "Measurement & incrementality", badge: "", desc: "Geo tests, holdouts, lift studies and MMM that tell you what your spend is really doing, not what the platform dashboard says." },
+      { title: "Creative strategy & testing", badge: "", desc: "A testing system, not a lucky ad: hypotheses, volume math and iteration loops that compound." },
+      { title: "Solutions & platform engineering", badge: "", desc: "Tracking, CAPI, data infrastructure and martech setup: the technical work the platforms assume you've done right." },
+      { title: "Audits & diagnosis", badge: "", desc: "A senior operator inside your stack, telling you plainly what's wrong, what's fine, and what to do next." }
+    ];
+
+    const operatorProfiles = [
+      { role: "Performance lead", background: "Meta · 8 yrs" },
+      { role: "Solutions engineer", background: "Meta · CAPI & data" },
+      { role: "Measurement scientist", background: "Snap · lift & MMM" },
+      { role: "Head of paid social", background: "Agency · retail" },
+      { role: "Creative strategist", background: "TikTok · commerce" }
+    ];
+
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
+      { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+    ));
+
+    document.getElementById("disciplines").innerHTML = projectTypes.map((pt) => `
+      <div class="card">
+        <div class="card-head">
+          <h3 class="card-title">${esc(pt.title)}</h3>
+          ${pt.badge ? `<span class="badge">${esc(pt.badge)}</span>` : ""}
+        </div>
+        <p class="card-desc">${esc(pt.desc)}</p>
+      </div>
+    `).join("");
+
+    const opList = document.getElementById("operators-list");
+    opList.insertAdjacentHTML("afterbegin", operatorProfiles.map((op) => `
+      <div class="op-row">
+        <div class="op-role">${esc(op.role)}</div>
+        <span class="op-bg">${esc(op.background)}</span>
+      </div>
+    `).join(""));
+  </script>
+
+</body>
+</html>
