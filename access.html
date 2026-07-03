@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Join the network — The Platform Collective</title>
+  <title>Get access — The Platform Collective</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -144,9 +144,9 @@
     </nav>
 
     <div class="head">
-      <div class="pill">For operators</div>
-      <h1 class="title">Join the network.</h1>
-      <p class="sub">The network grows by referral and hand-vetting. Tell us who you are and we'll take it from there. Every application is read by someone already in the network.</p>
+      <div class="pill">For companies</div>
+      <h1 class="title">Get access to the network.</h1>
+      <p class="sub">Tell us where to reach you. We'll get in touch to understand what you need, then scope it and match you with the right operator in the network.</p>
     </div>
   </header>
 
@@ -154,39 +154,34 @@
   <div class="card-wrap">
     <div class="card">
 
-      <form id="join-form" method="POST" target="join_sink" novalidate>
-        <input type="hidden" name="type" value="operator">
-        <p class="card-lede">Four quick things. If it's a fit, we'll be in touch to talk through your background.</p>
+      <form id="access-form" method="POST" target="access_sink" novalidate>
+        <input type="hidden" name="type" value="client">
+        <p class="card-lede">Two quick things and we'll take it from there. No obligation, no retainer, no sales call script.</p>
 
         <div class="field">
-          <label class="label" for="name">Name</label>
-          <input class="input" id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" required>
-        </div>
-
-        <div class="field">
-          <label class="label" for="email">Email</label>
+          <label class="label" for="email">Work email</label>
           <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
         </div>
 
         <div class="field">
-          <label class="label" for="linkedin">LinkedIn or portfolio</label>
-          <input class="input" id="linkedin" name="linkedin" type="url" inputmode="url" placeholder="https://linkedin.com/in/…" required>
+          <label class="label" for="company">Company</label>
+          <input class="input" id="company" name="company" type="text" autocomplete="organization" placeholder="Company name" required>
         </div>
 
         <div class="field">
-          <label class="label" for="note">A short note <span class="opt">(optional)</span></label>
-          <textarea class="textarea" id="note" name="note" placeholder="What you'd bring to the network. A line or two is plenty."></textarea>
+          <label class="label" for="note">What do you need? <span class="opt">(optional)</span></label>
+          <textarea class="textarea" id="note" name="note" placeholder="The outcome you're after, in plain language. A line or two is plenty."></textarea>
         </div>
 
-        <button class="submit" id="submit-btn" type="submit">Apply to the network</button>
-        <p class="error" id="error-msg">Something went wrong sending that. Please try again, or email us directly.</p>
-        <p class="fineprint">No juniors, no keyword-match résumés. We read every application.</p>
+        <button class="submit" id="submit-btn" type="submit">Request access</button>
+        <p class="error" id="error-msg">Something went wrong sending that. Please try again in a moment.</p>
+        <p class="fineprint">We reply personally, usually within a day. Your details go to us alone.</p>
       </form>
 
       <div class="success" id="success">
         <div class="check">✓</div>
-        <h2>Application received.</h2>
-        <p>Thanks. Someone in the network will review it and reach out if it's a fit. We keep the bar high, so we're selective about who we bring in.</p>
+        <h2>Request received.</h2>
+        <p>Thanks. We'll be in touch shortly to understand what you need and match you with the right operator in the network.</p>
         <a href="index.html">← Back to home</a>
       </div>
 
@@ -201,7 +196,7 @@
         <span class="footer-name">The Platform Collective</span>
       </a>
       <div class="footer-links">
-        <a href="index.html#cta" class="footer-link">Get access</a>
+        <a href="join.html" class="footer-link">Join the network</a>
         <a href="#" class="footer-link">Contact</a>
         <span class="footer-copy">© 2026</span>
       </div>
@@ -209,28 +204,26 @@
   </footer>
 
   <!-- Hidden target so the POST doesn't navigate the page away -->
-  <iframe name="join_sink" id="join_sink" style="display:none" title="hidden"></iframe>
+  <iframe name="access_sink" id="access_sink" style="display:none" title="hidden"></iframe>
 
   <script>
     // ── CONFIG ──────────────────────────────────────────────
-    // Paste your Google Apps Script Web App URL here (ends in /exec).
+    // Same Google Apps Script Web App URL as the join form (routes by the hidden "type" field).
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbwg-KtspBp1hCa9I1Je4oWwowfM89kwzGB_C6to2l7wrnduUvjSHuObpDksoxofj7LN/exec";
     // ────────────────────────────────────────────────────────
 
-    const form = document.getElementById("join-form");
+    const form = document.getElementById("access-form");
     const btn = document.getElementById("submit-btn");
     const errorMsg = document.getElementById("error-msg");
     const successBox = document.getElementById("success");
-    const sink = document.getElementById("join_sink");
+    const sink = document.getElementById("access_sink");
 
     let submitting = false;
-
     form.setAttribute("action", ENDPOINT);
 
     form.addEventListener("submit", function (e) {
       errorMsg.style.display = "none";
 
-      // Native validity check (required fields + email/url format)
       if (!form.checkValidity()) {
         e.preventDefault();
         form.reportValidity();
@@ -244,13 +237,11 @@
         return;
       }
 
-      // Let the real form POST into the hidden iframe.
       submitting = true;
       btn.disabled = true;
       btn.textContent = "Sending…";
     });
 
-    // The iframe fires 'load' once after the POST completes.
     sink.addEventListener("load", function () {
       if (!submitting) return; // ignore the initial blank load
       submitting = false;
