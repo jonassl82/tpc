@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>The Platform Collective — Senior platform operators, on demand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #FAF9F5; }
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    * { box-sizing: border-box; }
+    ::selection { background: #1E3A2F; color: #FAF9F5; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #191712; background: #FAF9F5; min-height: 100vh;">
+
+  <!-- ======================= NAV ======================= -->
+  <nav style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 6vw; border-bottom: 1px solid #E7E3D8;">
+    <div style="display: flex; align-items: baseline; gap: 10px;">
+      <span style="font-family: 'Newsreader', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: -0.01em;">The Platform Collective</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 32px;">
+      <a href="#how" style="color: #191712; text-decoration: none; font-size: 14px; letter-spacing: 0.01em; opacity: 0.75;" style-hover="opacity: 1;">How it works</a>
+      <a href="#projects" style="color: #191712; text-decoration: none; font-size: 14px; letter-spacing: 0.01em; opacity: 0.75;" style-hover="opacity: 1;">Projects</a>
+      <a href="#operators" style="color: #191712; text-decoration: none; font-size: 14px; letter-spacing: 0.01em; opacity: 0.75;" style-hover="opacity: 1;">Operators</a>
+      <a href="#cta" style="color: #FAF9F5; background: #191712; text-decoration: none; font-size: 14px; padding: 11px 20px; letter-spacing: 0.01em;" style-hover="background: #1E3A2F;">Describe your project</a>
+    </div>
+  </nav>
+
+  <!-- ======================= HERO ======================= -->
+  <header style="padding: clamp(72px, 11vw, 150px) 6vw clamp(64px, 9vw, 120px); border-bottom: 1px solid #E7E3D8;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: {{ heroAlign }};">
+      <div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #7A756A; margin-bottom: 36px;">A hand-vetted network of senior operators who built the platforms</div>
+      <h1 style="font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: clamp(42px, 6.2vw, 88px); line-height: 1.04; letter-spacing: -0.02em; margin: 0 0 32px; max-width: 18ch;">The people who built the platforms. On your project, not on retainer.</h1>
+      <p style="font-size: clamp(17px, 1.5vw, 20px); line-height: 1.55; color: #4A463D; max-width: 52ch; margin: 0 0 44px;">Senior operators from Meta, Snap and TikTok — across paid media, measurement, creative and platform engineering, led by the deepest paid-media bench anywhere. You describe the outcome. We scope it. Someone excellent delivers.</p>
+      <div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+        <a href="#cta" style="display: inline-block; background: #191712; color: #FAF9F5; text-decoration: none; font-size: 16px; padding: 17px 34px; letter-spacing: 0.01em;" style-hover="background: #1E3A2F;">Describe your project</a>
+        <a href="#operators" style="color: #191712; text-decoration: none; font-size: 15px; border-bottom: 1px solid #B9B3A4; padding-bottom: 3px;" style-hover="border-bottom-color: #191712;">For operators: join the network</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================= HOW IT WORKS ======================= -->
+  <section id="how" style="padding: clamp(72px, 9vw, 130px) 6vw; border-bottom: 1px solid #E7E3D8;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #7A756A; margin-bottom: 56px;">How it works</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0; border-left: 1px solid #E7E3D8;">
+        <div style="padding: 0 40px 8px 32px; border-right: 1px solid #E7E3D8;">
+          <div style="font-family: 'Newsreader', Georgia, serif; font-size: 15px; font-style: italic; color: #7A756A; margin-bottom: 24px;">01</div>
+          <h3 style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 16px;">You describe the outcome</h3>
+          <p style="font-size: 15px; line-height: 1.6; color: #4A463D; margin: 0; max-width: 34ch;">The result you need, in plain language. You don't need to know how to scope it — that's our job.</p>
+        </div>
+        <div style="padding: 0 40px 8px 32px; border-right: 1px solid #E7E3D8;">
+          <div style="font-family: 'Newsreader', Georgia, serif; font-size: 15px; font-style: italic; color: #7A756A; margin-bottom: 24px;">02</div>
+          <h3 style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 16px;">We scope it into a defined project</h3>
+          <p style="font-size: 15px; line-height: 1.6; color: #4A463D; margin: 0; max-width: 34ch;">Deliverables, timeline and price, agreed before anything starts. No open-ended engagements.</p>
+        </div>
+        <div style="padding: 0 40px 8px 32px; border-right: 1px solid #E7E3D8;">
+          <div style="font-family: 'Newsreader', Georgia, serif; font-size: 15px; font-style: italic; color: #7A756A; margin-bottom: 24px;">03</div>
+          <h3 style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 16px;">A vetted operator delivers</h3>
+          <p style="font-size: 15px; line-height: 1.6; color: #4A463D; margin: 0; max-width: 34ch;">Matched to your exact project. Senior, hand-vetted, vouched for by the network. No hand-offs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PROJECT TYPES ======================= -->
+  <section id="projects" style="padding: clamp(72px, 9vw, 130px) 6vw; border-bottom: 1px solid #E7E3D8;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 56px;">
+        <div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #7A756A;">What people bring us</div>
+        <div style="font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 17px; color: #7A756A;">Five disciplines today — expanding into adjacent platform work like messaging, commerce and CRM.</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+        <sc-for list="{{ projectTypes }}" as="pt" hint-placeholder-count="5">
+          <div style="border: 1px solid #E7E3D8; background: #FFFFFE; padding: 36px 32px 40px; display: flex; flex-direction: column; gap: 14px;" style-hover="border-color: #191712;">
+            <div style="font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 14px; color: #7A756A;">{{ pt.num }}</div>
+            <h3 style="font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 25px; letter-spacing: -0.01em; line-height: 1.15; margin: 0;">{{ pt.title }}</h3>
+            <p style="font-size: 15px; line-height: 1.6; color: #4A463D; margin: 0;">{{ pt.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= OPERATORS ======================= -->
+  <section id="operators" style="padding: clamp(72px, 9vw, 130px) 6vw; background: #191712; color: #FAF9F5;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(40px, 6vw, 96px); align-items: start;">
+        <div>
+          <div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #99937F; margin-bottom: 36px;">Who the operators are</div>
+          <h2 style="font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 28px; max-width: 16ch;">People who ran this at scale — inside the platforms.</h2>
+          <p style="font-size: 16px; line-height: 1.65; color: #C7C1B2; max-width: 46ch; margin: 0 0 20px;">Every operator in the network is senior, hand-vetted, and vouched for by someone already in it. Performance leads, measurement scientists, solutions engineers and creative leads — most spent years at Meta, Snap or TikTok, or led accounts at the agencies you'd otherwise hire.</p>
+          <p style="font-size: 16px; line-height: 1.65; color: #C7C1B2; max-width: 46ch; margin: 0 0 36px;">No juniors. No résumé keyword matches. If they're here, someone we trust put their name on it.</p>
+          <a href="#cta" style="color: #FAF9F5; text-decoration: none; font-size: 15px; border-bottom: 1px solid #5C574C; padding-bottom: 3px;" style-hover="border-bottom-color: #FAF9F5;">Think you belong here? Join the network</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ operatorProfiles }}" as="op" hint-placeholder-count="5">
+            <div style="border: 1px solid #33302A; padding: 22px 26px; display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+              <div style="font-family: 'Newsreader', Georgia, serif; font-size: 19px; letter-spacing: -0.01em;">{{ op.role }}</div>
+              <div style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: #99937F; white-space: nowrap;">{{ op.background }}</div>
+            </div>
+          </sc-for>
+          <div style="font-size: 13px; color: #7A756A; padding-top: 10px; font-style: italic; font-family: 'Newsreader', Georgia, serif;">Profiles shared once your project is scoped.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= COMPARISON ======================= -->
+  <sc-if value="{{ showComparison }}" hint-placeholder-val="{{ true }}">
+    <section style="padding: clamp(72px, 9vw, 130px) 6vw; border-bottom: 1px solid #E7E3D8;">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #7A756A; margin-bottom: 56px;">Why not an agency. Why not a freelancer.</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: stretch;">
+
+          <div style="padding: 36px 32px; border: 1px solid #E7E3D8; display: flex; flex-direction: column; gap: 20px;">
+            <div style="font-family: 'Newsreader', Georgia, serif; font-size: 24px; letter-spacing: -0.01em;">An agency</div>
+            <div style="display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.55; color: #4A463D;">
+              <div style="display: flex; gap: 12px;"><span style="color: #B9B3A4;">—</span><span>Retainers that outlive the work</span></div>
+              <div style="display: flex; gap: 12px;"><span style="color: #B9B3A4;">—</span><span>Senior faces in the pitch, juniors on the account</span></div>
+              <div style="display: flex; gap: 12px;"><span style="color: #B9B3A4;">—</span><span>Overhead you pay for whether or not you use it</span></div>
+            </div>
+          </div>
+
+          <div style="padding: 36px 32px; background: #1E3A2F; color: #FAF9F5; display: flex; flex-direction: column; gap: 20px;">
+            <div style="font-family: 'Newsreader', Georgia, serif; font-size: 24px; letter-spacing: -0.01em;">The Collective</div>
+            <div style="display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.55; color: #D7DED8;">
+              <div style="display: flex; gap: 12px;"><span>·</span><span>Senior only — the person you meet does the work</span></div>
+              <div style="display: flex; gap: 12px;"><span>·</span><span>Scoped before it starts: deliverables, timeline, price</span></div>
+              <div style="display: flex; gap: 12px;"><span>·</span><span>Vetted and vouched for, accountable to the network</span></div>
+              <div style="display: flex; gap: 12px;"><span>·</span><span>Ends when the work ends. No retainer</span></div>
+            </div>
+          </div>
+
+          <div style="padding: 36px 32px; border: 1px solid #E7E3D8; display: flex; flex-direction: column; gap: 20px;">
+            <div style="font-family: 'Newsreader', Georgia, serif; font-size: 24px; letter-spacing: -0.01em;">A freelancer</div>
+            <div style="display: flex; flex-direction: column; gap: 14px; font-size: 15px; line-height: 1.55; color: #4A463D;">
+              <div style="display: flex; gap: 12px;"><span style="color: #B9B3A4;">—</span><span>Unvetted — you find out mid-project</span></div>
+              <div style="display: flex; gap: 12px;"><span style="color: #B9B3A4;">—</span><span>Scope you have to define and police yourself</span></div>
+              <div style="display: flex; gap: 12px;"><span style="color: #B9B3A4;">—</span><span>Accountable to no one but their calendar</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ======================= FINAL CTA ======================= -->
+  <section id="cta" style="padding: clamp(88px, 12vw, 170px) 6vw; border-bottom: 1px solid #E7E3D8;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+      <h2 style="font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: clamp(38px, 5vw, 68px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 24px;">Tell us what you need.</h2>
+      <p style="font-size: 17px; line-height: 1.6; color: #4A463D; max-width: 44ch; margin: 0 auto 44px;">A short conversation about the outcome. A scoped project back within days.</p>
+      <a href="#" style="display: inline-block; background: #191712; color: #FAF9F5; text-decoration: none; font-size: 16px; padding: 18px 40px; letter-spacing: 0.01em;" style-hover="background: #1E3A2F;">Describe your project</a>
+    </div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer style="padding: 40px 6vw 48px; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+    <span style="font-family: 'Newsreader', Georgia, serif; font-size: 16px;">The Platform Collective</span>
+    <div style="display: flex; gap: 28px; font-size: 13px;">
+      <a href="#operators" style="color: #7A756A; text-decoration: none;" style-hover="color: #191712;">Join the network</a>
+      <a href="#" style="color: #7A756A; text-decoration: none;" style-hover="color: #191712;">Contact</a>
+      <span style="color: #B9B3A4;">© 2026</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;heroAlign&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;left&quot;, &quot;center&quot;], &quot;default&quot;: &quot;left&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Layout&quot; },
+  &quot;showComparison&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Sections&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      heroAlign: this.props.heroAlign ?? "left",
+      showComparison: this.props.showComparison ?? true,
+      projectTypes: [
+        { num: "01", title: "Paid media & growth", desc: "Our deepest bench. Campaign planning, channel and market expansion, scaling — built by people who know how the auction actually behaves." },
+        { num: "02", title: "Measurement & incrementality", desc: "Geo tests, holdouts, lift studies and MMM that tell you what your spend is really doing — not what the platform dashboard says." },
+        { num: "03", title: "Creative strategy & testing", desc: "A testing system, not a lucky ad: hypotheses, volume math and iteration loops that compound." },
+        { num: "04", title: "Solutions & platform engineering", desc: "Tracking, CAPI, data infrastructure and martech setup — the technical work the platforms assume you've done right." },
+        { num: "05", title: "Audits & diagnosis", desc: "A senior operator inside your stack, telling you plainly what's wrong, what's fine, and what to do next." }
+      ],
+      operatorProfiles: [
+        { role: "Former performance lead", background: "Ex-Meta · 8 yrs" },
+        { role: "Former solutions engineer", background: "Ex-Meta · CAPI & data" },
+        { role: "Former measurement scientist", background: "Ex-Snap · lift & MMM" },
+        { role: "Former head of paid social", background: "Ex-agency · retail" },
+        { role: "Former creative strategist", background: "Ex-TikTok · commerce" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
